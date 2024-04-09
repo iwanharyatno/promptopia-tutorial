@@ -1,6 +1,7 @@
 import Nav from '@/components/Nav';
 import Provider from '@/components/Provider';
 import '@/styles/globals.css';
+import { Suspense } from 'react';
 
 export const metadata = {
   title: 'Promptopia',
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
 
           <main className='app'>
             <Nav />
-            {children}
+            <Suspense fallback={<h1 className='font-inter font-semibold text-center'>Loading...</h1>}>
+              {children}
+            </Suspense>
           </main>
         </Provider>
       </body>
